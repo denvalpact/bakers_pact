@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Kampala Fresh Bakery</title>
+    <title>Our Products | Costco Bakery </title>
     <style>
-        /* Global Styles - Consistent with other pages */
         :root {
             --primary: #F5A623;
             --secondary: #E8C4C4;
@@ -39,7 +38,6 @@
             padding: 0 15px;
         }
         
-        /* Header & Navigation */
         header {
             background-color: var(--light);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -99,9 +97,12 @@
             font-size: 0.7rem;
         }
         
-        /* Products Page Specific Styles */
         .page-header {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+            background-image: url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
             height: 250px;
             display: flex;
             align-items: center;
@@ -115,7 +116,6 @@
             font-size: 2.5rem;
         }
         
-        /* Product Filters */
         .product-controls {
             display: flex;
             justify-content: space-between;
@@ -142,6 +142,18 @@
             flex-wrap: wrap;
         }
         
+        .category-section {
+            margin-bottom: 50px;
+        }
+        
+        .category-title {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
         .category-btn {
             padding: 8px 15px;
             background-color: white;
@@ -157,7 +169,6 @@
             border-color: var(--primary);
         }
         
-        /* Products Grid */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -225,6 +236,34 @@
             font-size: 0.8rem;
             color: #888;
         }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
         
         .add-to-cart {
             background-color: var(--primary);
@@ -240,141 +279,6 @@
             background-color: #e6951a;
         }
         
-        /* Product Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 50px auto;
-            max-width: 800px;
-            border-radius: 10px;
-            overflow: hidden;
-            animation: modalFadeIn 0.3s;
-        }
-        
-        @keyframes modalFadeIn {
-            from {opacity: 0; transform: translateY(-50px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-        
-        .modal-header {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .close-modal {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .modal-body {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        .modal-image {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .modal-details {
-            flex: 1;
-            min-width: 300px;
-            padding: 20px;
-        }
-        
-        .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .modal-price {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        
-        .modal-desc {
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-        
-        .modal-features {
-            margin-bottom: 20px;
-        }
-        
-        .feature-item {
-            display: flex;
-            margin-bottom: 10px;
-        }
-        
-        .feature-icon {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-        
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        
-        .quantity-btn {
-            padding: 5px 10px;
-            background-color: #f5f5f5;
-            cursor: pointer;
-            user-select: none;
-        }
-        
-        .quantity-input {
-            width: 40px;
-            text-align: center;
-            border: none;
-            border-left: 1px solid #ddd;
-            border-right: 1px solid #ddd;
-        }
-        
-        /* Featured Products */
-        .featured-section {
-            background-color: white;
-            padding: 50px 0;
-            margin-bottom: 50px;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
-        
-        /* Footer */
         footer {
             background-color: var(--dark);
             color: var(--light);
@@ -422,19 +326,9 @@
             font-size: 0.9rem;
         }
         
-        /* Responsive Design */
         @media (max-width: 768px) {
             .product-controls {
                 flex-direction: column;
-            }
-            
-            .modal-body {
-                flex-direction: column;
-            }
-            
-            .modal-image {
-                min-width: 100%;
-                height: 300px;
             }
         }
         
@@ -446,27 +340,21 @@
             .products-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .modal-actions {
-                flex-direction: column;
-            }
         }
     </style>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">Crust & <span>Crumb</span></a>
+                <a href="index.html" class="logo">Costco <span>Bakery</span></a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
                     <a href="products.html" class="active">Products</a>
                     <a href="contact.html">Contact</a>
-                    <a href="#" class="cart-icon">
+                    <a href="cart.html" class="cart-icon">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="cart-count">0</span>
                     </a>
@@ -475,15 +363,13 @@
         </div>
     </header>
 
-    <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Our Delicious Products</h1>
+            <h1>Our Bakery Products</h1>
             <p>Freshly baked daily with love and tradition</p>
         </div>
     </section>
 
-    <!-- Product Filters -->
     <section class="container">
         <div class="product-controls">
             <div class="search-filter">
@@ -491,194 +377,426 @@
             </div>
             <div class="category-filter">
                 <button class="category-btn active" data-category="all">All Items</button>
-                <button class="category-btn" data-category="bread">Breads</button>
                 <button class="category-btn" data-category="cake">Cakes</button>
-                <button class="category-btn" data-category="pastry">Pastries</button>
-                <button class="category-btn" data-category="dessert">Desserts</button>
-                <button class="category-btn" data-category="special">Special Diet</button>
+                <button class="category-btn" data-category="muffin">Muffins</button>
+                <button class="category-btn" data-category="mandazi">Mandazi</button>
+                <button class="category-btn" data-category="bread">Bread</button>
             </div>
         </div>
-    </section>
 
-    <!-- Products Grid -->
-    <section class="container">
-        <div class="products-grid">
-            <!-- Bread 1 -->
-            <div class="product-card" data-category="bread">
-                <div class="product-badge">BESTSELLER</div>
-                <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Artisan Sourdough Bread" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Artisan Sourdough</h3>
-                    <p class="product-desc">Traditional 24-hour fermented sourdough with perfect crust</p>
-                    <div class="product-price">15,000 UGX</div>
-                    <div class="product-meta">
-                        <span>500g loaf</span>
-                        <button class="add-to-cart" data-id="1">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bread 2 -->
-            <div class="product-card" data-category="bread">
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="French Baguette" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">French Baguette</h3>
-                    <p class="product-desc">Crispy crust with soft interior, baked fresh daily</p>
-                    <div class="product-price">8,000 UGX</div>
-                    <div class="product-meta">
-                        <span>250g</span>
-                        <button class="add-to-cart" data-id="2">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cake 1 -->
-            <div class="product-card" data-category="cake">
-                <div class="product-badge">POPULAR</div>
-                <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Cake" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Chocolate Fudge Cake</h3>
-                    <p class="product-desc">Rich chocolate cake with creamy fudge frosting</p>
-                    <div class="product-price">25,000 UGX</div>
-                    <div class="product-meta">
-                        <span>Serves 6-8</span>
-                        <button class="add-to-cart" data-id="3">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pastry 1 -->
-            <div class="product-card" data-category="pastry">
-                <img src="https://images.unsplash.com/photo-1562440499-64c9a111f713?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Butter Croissants" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Butter Croissants</h3>
-                    <p class="product-desc">Flaky, buttery layers made with premium ingredients</p>
-                    <div class="product-price">5,000 UGX</div>
-                    <div class="product-meta">
-                        <span>Each</span>
-                        <button class="add-to-cart" data-id="4">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dessert 1 -->
-            <div class="product-card" data-category="dessert">
-                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cinnamon Rolls" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Cinnamon Rolls</h3>
-                    <p class="product-desc">Soft, sweet rolls with cinnamon sugar and cream cheese icing</p>
-                    <div class="product-price">6,000 UGX</div>
-                    <div class="product-meta">
-                        <span>Each</span>
-                        <button class="add-to-cart" data-id="5">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Special Diet 1 -->
-            <div class="product-card" data-category="special">
-                <div class="product-badge">GLUTEN-FREE</div>
-                <img src="https://images.unsplash.com/photo-1603532648955-039310d7845c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gluten-Free Banana Bread" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Gluten-Free Banana Bread</h3>
-                    <p class="product-desc">Moist and delicious, made with almond flour</p>
-                    <div class="product-price">12,000 UGX</div>
-                    <div class="product-meta">
-                        <span>500g loaf</span>
-                        <button class="add-to-cart" data-id="6">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bread 3 -->
-            <div class="product-card" data-category="bread">
-                <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Whole Wheat Bread" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Whole Wheat Bread</h3>
-                    <p class="product-desc">Nutritious and hearty, made with 100% whole grains</p>
-                    <div class="product-price">10,000 UGX</div>
-                    <div class="product-meta">
-                        <span>500g loaf</span>
-                        <button class="add-to-cart" data-id="7">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cake 2 -->
-            <div class="product-card" data-category="cake">
-                <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Red Velvet Cake" class="product-img">
-                <div class="product-info">
-                    <h3 class="product-title">Red Velvet Cake</h3>
-                    <p class="product-desc">Classic red velvet with cream cheese frosting</p>
-                    <div class="product-price">28,000 UGX</div>
-                    <div class="product-meta">
-                        <span>Serves 8-10</span>
-                        <button class="add-to-cart" data-id="8">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section class="featured-section">
-        <div class="container">
-            <h2 class="section-title">Customer Favorites</h2>
+        <!-- CAKES -->
+        <div class="category-section">
+            <h2 class="category-title">Cakes</h2>
             <div class="products-grid">
-                <!-- Featured items would go here -->
-                <!-- Typically you would duplicate some of the bestsellers from above -->
+                <div class="product-card" data-category="cake">
+                    <div class="product-badge">BESTSELLER</div>
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Chocolate Cake</h3>
+                        <p class="product-desc">Rich chocolate cake with fudge frosting</p>
+                        <div class="product-price">35,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves 8-10</span>
+                            <button class="add-to-cart" 
+                                    data-id="1" 
+                                    data-name="Chocolate Cake" 
+                                    data-price="35000" 
+                                    data-image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://img.taste.com.au/JdKkh-Nz/taste/2016/11/banana-cake-with-cream-cheese-frosting-30752-1.jpeg" alt="Banana Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Banana Cake</h3>
+                        <p class="product-desc">Moist banana cake with cream cheese frosting</p>
+                        <div class="product-price">30,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves 6-8</span>
+                            <button class="add-to-cart" 
+                                    data-id="2" 
+                                    data-name="Banana Cake" 
+                                    data-price="30000" 
+                                    data-image="https://img.taste.com.au/JdKkh-Nz/taste/2016/11/banana-cake-with-cream-cheese-frosting-30752-1.jpeg">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://static01.nyt.com/images/2020/11/01/dining/Carrot-Cake-textless/Carrot-Cake-textless-videoSixteenByNineJumbo1600.jpg" alt="Carrot Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Carrot Cake</h3>
+                        <p class="product-desc">Spiced carrot cake with walnuts</p>
+                        <div class="product-price">32,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves 8</span>
+                            <button class="add-to-cart" 
+                                    data-id="3" 
+                                    data-name="Carrot Cake" 
+                                    data-price="32000" 
+                                    data-image="https://static01.nyt.com/images/2020/11/01/dining/Carrot-Cake-textless/Carrot-Cake-textless-videoSixteenByNineJumbo1600.jpg">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://www.mycakeschool.com/images/2020/02/chocolate-cherry-cake-photo-.jpg" alt="Cherry Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Cherry Cake</h3>
+                        <p class="product-desc">Light vanilla cake with cherry topping</p>
+                        <div class="product-price">28,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves 6</span>
+                            <button class="add-to-cart" 
+                                    data-id="4" 
+                                    data-name="Cherry Cake" 
+                                    data-price="28000" 
+                                    data-image="https://www.mycakeschool.com/images/2020/02/chocolate-cherry-cake-photo-.jpg">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://aparisianjourney.com/wp-content/uploads/2020/02/IMG_3809-3-1100x1580.jpg" alt="Heart Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Heart Cake</h3>
+                        <p class="product-desc">Romantic heart-shaped vanilla cake</p>
+                        <div class="product-price">38,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves 10</span>
+                            <button class="add-to-cart" 
+                                    data-id="5" 
+                                    data-name="Heart Cake" 
+                                    data-price="38000" 
+                                    data-image="https://aparisianjourney.com/wp-content/uploads/2020/02/IMG_3809-3-1100x1580.jpg">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSS4TDUlg6zylULClgGrh-Ei9Qn7otTwojag&s" alt="Queen Cakes" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Queen Cakes</h3>
+                        <p class="product-desc">Delicate mini cakes perfect for tea</p>
+                        <div class="product-price">3,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart" 
+                                    data-id="6" 
+                                    data-name="Queen Cakes" 
+                                    data-price="3000" 
+                                    data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSS4TDUlg6zylULClgGrh-Ei9Qn7otTwojag&s">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="cake">
+                    <img src="https://i.pinimg.com/736x/placeholder.jpg" alt="Placeholder Cake" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Placeholder Cake</h3>
+                        <p class="product-desc">Description for placeholder cake</p>
+                        <div class="product-price">0 UGX</div>
+                        <div class="product-meta">
+                            <span>Serves N/A</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MUFFINS -->
+        <div class="category-section">
+            <h2 class="category-title">Muffins</h2>
+            <div class="products-grid">
+                <div class="product-card" data-category="muffin">
+                    <img src="https://eatfreshglow.com/wp-content/uploads/2024/04/gluten-free-orange-muffins-15.jpg" alt="Orange Muffins" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Orange Muffins</h3>
+                        <p class="product-desc">Zesty orange flavor with citrus glaze</p>
+                        <div class="product-price">2,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://i0.wp.com/livslittlemuffins.com/wp-content/uploads/2024/02/DSC06903-2.jpg?resize=750%2C500&ssl=1" alt="Red Velvet Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Red Velvet Muffin</h3>
+                        <p class="product-desc">Classic red velvet with cream cheese</p>
+                        <div class="product-price">2,500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://i0.wp.com/tinhateats.com/wp-content/uploads/2024/06/IMG_7308.jpg?fit=800%2C534&ssl=1" alt="Vanilla Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Vanilla Muffin</h3>
+                        <p class="product-desc">Classic vanilla with soft crumb</p>
+                        <div class="product-price">2,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://tastefullygrace.com/wp-content/uploads/2023/01/Banana-Bread-Muffins-Recipe-1-500x375.jpg" alt="Banana Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Banana Muffin</h3>
+                        <p class="product-desc">Moist banana muffin with walnuts</p>
+                        <div class="product-price">2,500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ64yvC7zhsHquOT25hpI8n9o-lNDfoUTnEGw&s" alt="Chocolate Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Chocolate Muffin</h3>
+                        <p class="product-desc">Rich chocolate with chocolate chips</p>
+                        <div class="product-price">3,500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://lemonsandzest.com/wp-content/uploads/2020/03/Banana-Coconut-Muffins-20-480x270.jpg" alt="Coconut Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Coconut Muffin</h3>
+                        <p class="product-desc">Tropical coconut flavor with shredded coconut</p>
+                        <div class="product-price">3,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="muffin">
+                    <img src="https://theviewfromgreatisland.com/wp-content/uploads/2021/03/triple-berry-muffins-12.jpg" alt="Fruit Muffin" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fruit Muffin</h3>
+                        <p class="product-desc">Mixed fruit muffin with seasonal fruits</p>
+                        <div class="product-price">3,500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per muffin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANDAZI -->
+        <div class="category-section">
+            <h2 class="category-title">Mandazi & Doughnuts</h2>
+            <div class="products-grid">
+                <div class="product-card" data-category="mandazi">
+                    <img src="https://sugargeekshow.com/wp-content/uploads/2020/09/cake_donut_recipe_featured2.jpg" alt="Doughnuts" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Doughnuts</h3>
+                        <p class="product-desc">Classic ring doughnuts with glaze</p>
+                        <div class="product-price">500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mandazi">
+                    <img src="https://cookingwithclaudy.com/wp-content/uploads/2024/02/20240126110441_IMG_6760-1.jpg" alt="Mandazi" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Mandazi</h3>
+                        <p class="product-desc">East African style fried dough</p>
+                        <div class="product-price">500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mandazi">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2a08RdSy71ERa6c56Qz5FYGjU6-Ko2FmT2A&s" alt="Mandazi Kagonja" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Mandazi Kagonja</h3>
+                        <p class="product-desc">Extra crispy version of mandazi</p>
+                        <div class="product-price">500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mandazi">
+                    <img src="https://i.ytimg.com/vi/XAjOSoOVr84/maxresdefault.jpg" alt="Daddies" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Daddies</h3>
+                        <p class="product-desc">Sweet fried dough twists</p>
+                        <div class="product-price">10,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per tin</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="mandazi">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTzJKH6W3UGEN-guQcGuNWCaats5Z2XGss4PIT31ZKKj2g8OU0xb9zcNA5jpziZKcD67s&usqp=CAU" alt="Cookies" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Cookies</h3>
+                        <p class="product-desc">Assorted butter cookies</p>
+                        <div class="product-price">1,000 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BREAD -->
+        <div class="category-section">
+            <h2 class="category-title">Bread & Rolls</h2>
+            <div class="products-grid">
+                <div class="product-card" data-category="bread">
+                    <img src="https://i.ytimg.com/vi/-6oKEiI6_N0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCRNlEhmRzyyHnXtbmyK1ux3x7ycA" alt="Swiss Roll" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Swiss Roll</h3>
+                        <p class="product-desc">Soft sponge cake with jam filling</p>
+                        <div class="product-price">1,000 UGX</div>
+                        <div class="product-meta">
+                            <span>300g</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd6FDK1de3JTnSiRTvNx5Nq2frvuUey9EHBg&s" alt="Fruit Roll" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fruit Roll</h3>
+                        <p class="product-desc">Swiss roll with mixed fruit filling</p>
+                        <div class="product-price">1,000 UGX</div>
+                        <div class="product-meta">
+                            <span>300g</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://i0.wp.com/www.pardonyourfrench.com/wp-content/uploads/2023/11/Fruit-Cake-8.jpg?resize=1170%2C1753&ssl=1" alt="Fruit Block" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Fruit Block</h3>
+                        <p class="product-desc">Fruit bread loaf with candied fruits</p>
+                        <div class="product-price">6,000 UGX</div>
+                        <div class="product-meta">
+                            <span>1kg</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://i.ytimg.com/vi/fzIFzCO-tb8/maxresdefault.jpg" alt="Chocolate Swirl Bread" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Chocolate Swirl Bread</h3>
+                        <p class="product-desc">Sweet bread with chocolate swirls</p>
+                        <div class="product-price">6,000 UGX</div>
+                        <div class="product-meta">
+                            <span>1kg</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F8a14fa03a6d1f0e42ec041533e0489ed9360ba58" alt="Whole Wheat Bread" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Whole Wheat Bread</h3>
+                        <p class="product-desc">100% whole grain nutritious loaf</p>
+                        <div class="product-price">5,000 UGX</div>
+                        <div class="product-meta">
+                            <span>1kg</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://img-global.cpcdn.com/recipes/17a1b74f605f6d07/1200x630cq70/photo.jpg" alt="Simsim Bread" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Simsim Bread</h3>
+                        <p class="product-desc">Soft bread topped with sesame seeds</p>
+                        <div class="product-price">5,800 UGX</div>
+                        <div class="product-meta">
+                            <span>1kg</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPhASzhzaHlN-h3Q9KfsPbosiTV5bCqOFBKA&s" alt="Coil Buns" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Coil Buns</h3>
+                        <p class="product-desc">Soft sweet buns in coil shape</p>
+                        <div class="product-price">500 UGX</div>
+                        <div class="product-meta">
+                            <span>Per piece</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bread">
+                    <img src="https://img.favpng.com/4/15/19/white-bread-bakery-banana-bread-raisin-bread-milk-png-favpng-sxqXykL71CPt45mRdhi7qwfRs.jpg" alt="Family Milk Bread" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Family Milk Bread</h3>
+                        <p class="product-desc">Extra soft milk bread loaf</p>
+                        <div class="product-price">5,000 UGX</div>
+                        <div class="product-meta">
+                            <span>1kg</span>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Modal (hidden by default) -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Product Details</h2>
-                <span class="close-modal">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="modal-image">
-                    <img src="" alt="Product Image" id="modalProductImage">
-                </div>
-                <div class="modal-details">
-                    <div class="modal-price" id="modalProductPrice"></div>
-                    <p class="modal-desc" id="modalProductDesc"></p>
-                    
-                    <div class="modal-features">
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-bread-slice"></i></span>
-                            <span id="modalProductType"></span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-weight"></i></span>
-                            <span id="modalProductWeight"></span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-info-circle"></i></span>
-                            <span id="modalProductAllergens"></span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-leaf"></i></span>
-                            <span id="modalProductDiet"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-actions">
-                        <div class="quantity-control">
-                            <span class="quantity-btn minus">-</span>
-                            <input type="text" class="quantity-input" value="1">
-                            <span class="quantity-btn plus">+</span>
-                        </div>
-                        <button class="add-to-cart">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-icons">
@@ -700,111 +818,52 @@
     </footer>
 
     <script>
-        // Simple product filtering
-        document.querySelectorAll('.category-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.querySelector('.cart-count');
+
+        // Update cart count display
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        // Add to cart function
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.dataset.id;
+                const name = this.dataset.name;
+                const price = parseInt(this.dataset.price);
+                const image = this.dataset.image;
+
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.id === id);
                 
-                const category = this.dataset.category;
-                const products = document.querySelectorAll('.product-card');
-                
-                products.forEach(product => {
-                    if (category === 'all' || product.dataset.category === category) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Simple search functionality
-        document.querySelector('.search-filter input').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const products = document.querySelectorAll('.product-card');
-            
-            products.forEach(product => {
-                const title = product.querySelector('.product-title').textContent.toLowerCase();
-                const desc = product.querySelector('.product-desc').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || desc.includes(searchTerm)) {
-                    product.style.display = 'block';
+                if (existingItem) {
+                    existingItem.quantity += 1;
                 } else {
-                    product.style.display = 'none';
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
                 }
-            });
-        });
-        
-        // Modal functionality
-        const modal = document.getElementById('productModal');
-        const closeModal = document.querySelector('.close-modal');
-        
-        // This would be expanded with actual product data
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (!e.target.classList.contains('add-to-cart')) {
-                    // Get product info (in a real app, this would come from a database)
-                    const imgSrc = this.querySelector('img').src;
-                    const title = this.querySelector('.product-title').textContent;
-                    const price = this.querySelector('.product-price').textContent;
-                    const desc = this.querySelector('.product-desc').textContent;
-                    
-                    // Set modal content
-                    document.getElementById('modalProductImage').src = imgSrc;
-                    document.querySelector('.modal-title').textContent = title;
-                    document.getElementById('modalProductPrice').textContent = price;
-                    document.getElementById('modalProductDesc').textContent = desc;
-                    
-                    // These would come from product data
-                    document.getElementById('modalProductType').textContent = 'Type: ' + this.dataset.category.charAt(0).toUpperCase() + this.dataset.category.slice(1);
-                    document.getElementById('modalProductWeight').textContent = 'Weight: ' + this.querySelector('.product-meta span').textContent;
-                    document.getElementById('modalProductAllergens').textContent = 'Contains: Wheat, Eggs, Dairy';
-                    document.getElementById('modalProductDiet').textContent = this.dataset.category === 'special' ? 'Gluten-Free, Vegan' : 'Regular Diet';
-                    
-                    // Show modal
-                    modal.style.display = 'block';
-                }
-            });
-        });
-        
-        closeModal.addEventListener('click', function() {
-            modal.style.display = 'none';
-        });
-        
-        window.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-        
-        // Quantity controls
-        document.querySelectorAll('.quantity-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const input = this.parentElement.querySelector('.quantity-input');
-                let value = parseInt(input.value);
+
+                // Save to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
                 
-                if (this.classList.contains('minus') && value > 1) {
-                    input.value = value - 1;
-                } else if (this.classList.contains('plus')) {
-                    input.value = value + 1;
-                }
-            });
-        });
-        
-        // Simple cart functionality
-        let cartCount = 0;
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', function() {
-                cartCount++;
-                document.querySelector('.cart-count').textContent = cartCount;
+                // Update cart count
+                updateCartCount();
                 
-                // In a real app, you would add the actual product to a cart array
-                alert('Product added to cart!');
+                // Optional: Show added notification
+                alert(`${name} added to cart!`);
             });
         });
+
+        // Initialize cart count on page load
+        updateCartCount();
     </script>
 </body>
 </html>
