@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costco Bakery | Artisanal Breads & Pastries</title>
+    <title>Mama's Bakery | Artisanal Ugandan Baked Goods</title>
     <style>
         /* Global Styles */
         :root {
-            --primary: #F5A623;
-            --secondary: #E8C4C4;
+            --primary: #e67e22;
+            --secondary: #f39c12;
             --dark: #333;
             --light: #fff;
             --background: #FFF9F0;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --text: #555;
         }
         
         * {
@@ -23,7 +26,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--dark);
+            color: var(--text);
             background-color: var(--background);
         }
         
@@ -37,6 +40,42 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: var(--light);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e6951a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 25%;
         }
         
         /* Header & Navigation */
@@ -59,10 +98,13 @@
             font-size: 24px;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
         }
         
-        .logo span {
-            color: var(--dark);
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
         }
         
         .nav-links {
@@ -79,118 +121,134 @@
             color: var(--primary);
         }
         
-        .search-bar {
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
-        }
-        
-        .search-bar input {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-            transition: border 0.3s;
-        }
-        
-        .search-bar input:focus {
-            border-color: var(--primary);
+            justify-content: center;
+            font-size: 0.7rem;
         }
         
         /* Hero Section */
         .hero {
-            position: relative;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             height: 80vh;
             min-height: 500px;
-            overflow: hidden;
-        }
-        
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light);
         }
         
         .hero-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            color: var(--light);
             width: 90%;
             max-width: 800px;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 10px;
+            margin: 0 auto;
         }
         
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: var(--light);
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #e6951a;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Welcome Section */
-        .welcome {
+        /* About Section */
+        .about {
             padding: 80px 0;
             text-align: center;
         }
         
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background-color: var(--primary);
-            bottom: -10px;
-            left: 25%;
-        }
-        
-        .welcome p {
+        .about p {
             max-width: 800px;
             margin: 0 auto 40px;
             font-size: 1.1rem;
+            line-height: 1.8;
         }
         
-        /* Featured Products */
-        .featured {
+        /* Products Section */
+        .products {
             padding: 80px 0;
             background-color: var(--light);
         }
         
+        .product-controls {
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .search-filter input {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 8px 15px;
+            background-color: #eee;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .category-btn:hover:not(.active) {
+            background-color: #ddd;
+        }
+        
+        .category-section {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 30px;
         }
         
         .product-card {
@@ -199,82 +257,137 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
         
         .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--danger);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
         }
         
         .product-img {
             width: 100%;
-            height: 250px;
+            height: 200px;
             object-fit: cover;
+            display: block;
         }
         
         .product-info {
             padding: 20px;
         }
         
-        .product-info h3 {
+        .product-title {
+            font-size: 1.2rem;
             margin-bottom: 10px;
-            font-size: 1.3rem;
+            color: var(--dark);
         }
         
-        .product-info p {
+        .product-desc {
             color: #666;
             margin-bottom: 15px;
+            font-size: 0.9rem;
         }
         
-        .price {
+        .product-price {
             font-weight: 700;
             color: var(--primary);
             font-size: 1.2rem;
+            margin-bottom: 10px;
         }
         
-        /* News Section */
-        .news {
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .add-to-cart {
+            padding: 6px 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #e6951a;
+        }
+        
+        /* Testimonials */
+        .testimonials {
             padding: 80px 0;
             text-align: center;
         }
         
-        .news-item {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 30px;
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
             background-color: var(--light);
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
         }
         
-        .news-item h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
+        .testimonial-card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
         }
         
-        .news-item small {
-            color: #888;
+        .testimonial-text {
             font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
         }
         
         /* CTA Section */
-        .cta-section {
-            padding: 60px 0;
+        .cta {
+            padding: 80px 0;
             background-color: var(--primary);
             color: var(--light);
             text-align: center;
         }
         
-        .cta-section h2 {
+        .cta h2 {
             margin-bottom: 20px;
+            color: var(--light);
         }
         
-        .cta-section .btn {
+        .cta .btn {
             background-color: var(--light);
             color: var(--primary);
         }
         
-        .cta-section .btn:hover {
+        .cta .btn:hover {
             background-color: #f0f0f0;
         }
         
@@ -283,17 +396,40 @@
             background-color: var(--dark);
             color: var(--light);
             padding: 50px 0 20px;
-            text-align: center;
         }
         
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
             margin-bottom: 30px;
         }
         
-        .social-icons a {
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
             display: inline-block;
             width: 40px;
             height: 40px;
@@ -305,35 +441,14 @@
             transition: background-color 0.3s;
         }
         
-        .social-icons a:hover {
+        .social-links a:hover {
             background-color: var(--primary);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            padding-top: 80px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
         }
         
         .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #aaa;
             font-size: 0.9rem;
         }
@@ -343,10 +458,15 @@
             nav {
                 flex-direction: column;
                 gap: 20px;
+                padding: 15px 0;
             }
             
             .nav-links {
                 gap: 15px;
+            }
+            
+            .search-filter input {
+                width: 100%;
             }
             
             .hero h1 {
@@ -364,13 +484,16 @@
         
         @media (max-width: 480px) {
             .nav-links {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .hero-content {
                 padding: 20px;
+            }
+            
+            .category-filter {
+                justify-content: center;
             }
             
             .products-grid {
@@ -378,21 +501,26 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">Costco <span>Bakery</span></a>
+                <a href="index.html" class="logo">
+                    <img src="https://via.placeholder.com/40" alt="Mama's Bakery Logo">
+                    Mama's Bakery
+                </a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="products.html">Products</a>
+                    <a href="#products">Products</a>
+                    <a href="about.html">About Us</a>
                     <a href="contact.html">Contact</a>
-                </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search our bakery...">
+                    <a href="#" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </a>
                 </div>
             </nav>
         </div>
@@ -400,103 +528,334 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Freshly baked bread and pastries" class="hero-image">
         <div class="hero-content">
-            <h1>Artisanal Bakery Since 2010</h1>
-            <p>Handcrafted with tradition, passion, and the finest local ingredients</p>
-            <a href="products.html" class="btn">Explore Our Treats</a>
+            <h1>Authentic Ugandan Bakery Delights</h1>
+            <p>Handcrafted with love using traditional recipes and the finest local ingredients</p>
+            <a href="#products" class="btn">Explore Our Products</a>
         </div>
     </section>
 
-    <!-- Welcome Section -->
-    <section class="welcome">
+    <!-- About Section -->
+    <section class="about">
         <div class="container">
             <h2 class="section-title">Our Story</h2>
-            <p>Founded by master baker Jean Dupont, Crust & Crumb brings generations of French baking tradition to your neighborhood. What began as a small family bakery has grown into a beloved community institution, where every loaf, pastry, and dessert is crafted with meticulous attention to detail.</p>
+            <p>Founded in 2005 by Mama Nalongo, our bakery has grown from a small home kitchen to one of Kampala's most beloved bakeries. We combine traditional Ugandan baking techniques with modern quality standards to bring you the very best in cakes, breads, and pastries.</p>
+            <p>Every morning, our bakers start work before dawn to ensure you get the freshest products possible. We source our ingredients locally whenever possible, supporting Ugandan farmers and producers.</p>
+            <a href="about.html" class="btn">Learn More About Us</a>
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section class="featured">
+    <!-- Products Section -->
+    <section class="products" id="products">
         <div class="container">
-            <h2 class="section-title">Customer Favorites</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Butter croissants" class="product-img">
-                    <div class="product-info">
-                        <h3>Butter</h3>
-                        <p>Our signature flaky croissants made with premium French butter and slow-fermented dough.</p>
-                        <div class="price">$3.50</div>
-                    </div>
+            <h2 class="section-title">Our Products</h2>
+            
+            <div class="product-controls">
+                <div class="search-filter">
+                    <input type="text" placeholder="Search products..." id="product-search">
                 </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sourdough bread" class="product-img">
-                    <div class="product-info">
-                        <h3>Artisan Sourdough</h3>
-                        <p>24-hour fermented sourdough with perfect crust and airy interior. Made with our 10-year-old starter.</p>
-                        <div class="price">$7.00</div>
-                    </div>
+                <div class="category-filter">
+                    <button class="category-btn active" data-category="all">All Items</button>
+                    <button class="category-btn" data-category="cake">Cakes</button>
+                    <button class="category-btn" data-category="muffin">Muffins</button>
+                    <button class="category-btn" data-category="mandazi">Mandazi</button>
+                    <button class="category-btn" data-category="bread">Bread</button>
                 </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chocolate chip cookies" class="product-img">
-                    <div class="product-info">
-                        <h3>Chocolate Chip Cookies</h3>
-                        <p>Classic cookies with Belgian chocolate chunks and a hint of sea salt. Baked fresh daily.</p>
-                        <div class="price">$2.50 each</div>
+            </div>
+
+            <!-- CAKES -->
+            <div class="category-section">
+                <h2 class="category-title">Cakes</h2>
+                <div class="products-grid">
+                    <div class="product-card" data-category="cake">
+                        <div class="product-badge">BESTSELLER</div>
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Cake" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Chocolate Cake</h3>
+                            <p class="product-desc">Rich chocolate cake with fudge frosting</p>
+                            <div class="product-price">35,000 UGX</div>
+                            <div class="product-meta">
+                                <span>Serves 8-10</span>
+                                <button class="add-to-cart" 
+                                        data-id="1" 
+                                        data-name="Chocolate Cake" 
+                                        data-price="35000" 
+                                        data-image="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="product-card" data-category="cake">
+                        <img src="https://img.taste.com.au/JdKkh-Nz/taste/2016/11/banana-cake-with-cream-cheese-frosting-30752-1.jpeg" alt="Banana Cake" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Banana Cake</h3>
+                            <p class="product-desc">Moist banana cake with cream cheese frosting</p>
+                            <div class="product-price">30,000 UGX</div>
+                            <div class="product-meta">
+                                <span>Serves 6-8</span>
+                                <button class="add-to-cart" 
+                                        data-id="2" 
+                                        data-name="Banana Cake" 
+                                        data-price="30000" 
+                                        data-image="https://img.taste.com.au/JdKkh-Nz/taste/2016/11/banana-cake-with-cream-cheese-frosting-30752-1.jpeg">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="cake">
+                        <img src="https://static01.nyt.com/images/2020/11/01/dining/Carrot-Cake-textless/Carrot-Cake-textless-videoSixteenByNineJumbo1600.jpg" alt="Carrot Cake" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Carrot Cake</h3>
+                            <p class="product-desc">Spiced carrot cake with walnuts</p>
+                            <div class="product-price">32,000 UGX</div>
+                            <div class="product-meta">
+                                <span>Serves 8</span>
+                                <button class="add-to-cart" 
+                                        data-id="3" 
+                                        data-name="Carrot Cake" 
+                                        data-price="32000" 
+                                        data-image="https://static01.nyt.com/images/2020/11/01/dining/Carrot-Cake-textless/Carrot-Cake-textless-videoSixteenByNineJumbo1600.jpg">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More cake products would go here -->
                 </div>
+            </div>
+
+            <!-- MUFFINS -->
+            <div class="category-section">
+                <h2 class="category-title">Muffins</h2>
+                <div class="products-grid">
+                    <div class="product-card" data-category="muffin">
+                        <img src="https://eatfreshglow.com/wp-content/uploads/2024/04/gluten-free-orange-muffins-15.jpg" alt="Orange Muffins" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Orange Muffins</h3>
+                            <p class="product-desc">Zesty orange flavor with citrus glaze</p>
+                            <div class="product-price">2,000 UGX</div>
+                            <div class="product-meta">
+                                <span>Per muffin</span>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="muffin">
+                        <img src="https://i0.wp.com/livslittlemuffins.com/wp-content/uploads/2024/02/DSC06903-2.jpg?resize=750%2C500&ssl=1" alt="Red Velvet Muffin" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Red Velvet Muffin</h3>
+                            <p class="product-desc">Classic red velvet with cream cheese</p>
+                            <div class="product-price">2,500 UGX</div>
+                            <div class="product-meta">
+                                <span>Per muffin</span>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More muffin products would go here -->
+                </div>
+            </div>
+
+            <!-- MANDAZI -->
+            <div class="category-section">
+                <h2 class="category-title">Mandazi & Doughnuts</h2>
+                <div class="products-grid">
+                    <div class="product-card" data-category="mandazi">
+                        <img src="https://sugargeekshow.com/wp-content/uploads/2020/09/cake_donut_recipe_featured2.jpg" alt="Doughnuts" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Doughnuts</h3>
+                            <p class="product-desc">Classic ring doughnuts with glaze</p>
+                            <div class="product-price">500 UGX</div>
+                            <div class="product-meta">
+                                <span>Per piece</span>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More mandazi products would go here -->
+                </div>
+            </div>
+
+            <!-- BREAD -->
+            <div class="category-section">
+                <h2 class="category-title">Bread & Rolls</h2>
+                <div class="products-grid">
+                    <div class="product-card" data-category="bread">
+                        <img src="https://i.ytimg.com/vi/-6oKEiI6_N0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCRNlEhmRzyyHnXtbmyK1ux3x7ycA" alt="Swiss Roll" class="product-img">
+                        <div class="product-info">
+                            <h3 class="product-title">Swiss Roll</h3>
+                            <p class="product-desc">Soft sponge cake with jam filling</p>
+                            <div class="product-price">1,000 UGX</div>
+                            <div class="product-meta">
+                                <span>300g</span>
+                                <button class="add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- More bread products would go here -->
+                </div>
+            </div>
+            <div class="see-more"></div>
+                <a href="products.html" class="btn">See More Products</a>
             </div>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="news">
+    <!-- Testimonials -->
+    <section class="testimonials">
         <div class="container">
-            <h2 class="section-title">Latest News</h2>
-            <div class="news-item">
-                <h3>New Seasonal Pie: Apple Cinnamon!</h3>
-                <p>Our autumn special features locally grown Honeycrisp apples with warm cinnamon spice, all wrapped in our flaky butter crust. Available now through November.</p>
-                <small>Posted: September 15, 2024</small>
-            </div>
-            <div class="news-item">
-                <h3>Baking Classes Now Available</h3>
-                <p>Learn the secrets of French pastry from our head baker. First class starts October 5th - limited spots available!</p>
-                <small>Posted: August 28, 2024</small>
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah K.">
+                    <p class="testimonial-text">"The chocolate cake from Mama's Bakery is the best I've had in Kampala! I order it for every family celebration."</p>
+                    <p class="testimonial-author">Sarah K., Ntinda</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James M.">
+                    <p class="testimonial-text">"Fresh mandazi every morning - it's become part of my daily routine. The quality is consistently excellent."</p>
+                    <p class="testimonial-author">James M., Kololo</p>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Grace N.">
+                    <p class="testimonial-text">"I love that they use local ingredients. Their banana muffins remind me of my grandmother's recipe."</p>
+                    <p class="testimonial-author">Grace N., Bwaise</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="cta">
         <div class="container">
-            <h2>Ready to Taste the Difference?</h2>
-            <p>Visit our bakery today or order online for pickup</p>
-            <a href="contact.html" class="btn">Visit Us</a>
+            <h2>Ready to Taste Our Fresh Baked Goods?</h2>
+            <p>Visit our bakery or order for delivery</p>
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+                <a href="contact.html" class="btn">Find Our Location</a>
+                <a href="tel:+256712345678" class="btn">Call to Order</a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mama's Bakery</h3>
+                    <p>Bringing authentic Ugandan baked goods to your table since 2005. Made with love, tradition, and the finest local ingredients.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#products">Cakes</a></li>
+                        <li><a href="#products">Muffins</a></li>
+                        <li><a href="#products">Mandazi</a></li>
+                        <li><a href="#products">Bread</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Plot 42, Bakery Road, Kampala</li>
+                        <li><i class="fas fa-phone"></i> +256 712 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@mamasbakery.ug</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 7am-7pm</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="products.html">Products</a>
-                <a href="contact.html">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+            <div class="copyright">
+                <p>&copy; 2024 Mama's Bakery. All Rights Reserved.</p>
             </div>
-            <p class="copyright">© 2024 Crust & Crumb Bakery. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Font Awesome for icons (optional) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Simple cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const cartCount = document.querySelector('.cart-count');
+            let count = 0;
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    count++;
+                    cartCount.textContent = count;
+                    
+                    // Animation for visual feedback
+                    button.textContent = 'Added!';
+                    button.style.backgroundColor = '#2ecc71';
+                    setTimeout(() => {
+                        button.textContent = 'Add to Cart';
+                        button.style.backgroundColor = '#e67e22';
+                    }, 1000);
+                });
+            });
+            
+            // Category filter functionality
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Simple search functionality
+            const searchInput = document.getElementById('product-search');
+            searchInput.addEventListener('keyup', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                productCards.forEach(card => {
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const desc = card.querySelector('.product-desc').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

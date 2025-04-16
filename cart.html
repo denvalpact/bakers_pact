@@ -371,7 +371,7 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo">Kampala <span>Fresh</span></a>
+                <a href="index.html" class="logo">Costco <span>Bakery</span></a>
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="about.html">About</a>
@@ -396,64 +396,14 @@
     <section class="container">
         <div class="cart-container">
             <div class="cart-items">
-                <!-- Sample Cart Items -->
-                <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Cake" class="cart-item-img">
-                    <div class="cart-item-details">
-                        <h3 class="cart-item-title">Chocolate Cake</h3>
-                        <p class="cart-item-price">35,000 UGX</p>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" class="quantity-input" value="1" min="1">
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <span class="remove-item">Remove</span>
-                    </div>
-                    <div class="cart-item-total">
-                        <span class="item-total-price">35,000 UGX</span>
-                    </div>
-                </div>
-
-                <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Chocolate Muffin" class="cart-item-img">
-                    <div class="cart-item-details">
-                        <h3 class="cart-item-title">Chocolate Muffin</h3>
-                        <p class="cart-item-price">5,500 UGX</p>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" class="quantity-input" value="2" min="1">
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <span class="remove-item">Remove</span>
-                    </div>
-                    <div class="cart-item-total">
-                        <span class="item-total-price">11,000 UGX</span>
-                    </div>
-                </div>
-
-                <div class="cart-item">
-                    <img src="https://images.unsplash.com/photo-1630910392199-cc6b0b84a0a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mandazi" class="cart-item-img">
-                    <div class="cart-item-details">
-                        <h3 class="cart-item-title">Mandazi</h3>
-                        <p class="cart-item-price">2,000 UGX</p>
-                        <div class="quantity-control">
-                            <button class="quantity-btn minus">-</button>
-                            <input type="number" class="quantity-input" value="4" min="1">
-                            <button class="quantity-btn plus">+</button>
-                        </div>
-                        <span class="remove-item">Remove</span>
-                    </div>
-                    <div class="cart-item-total">
-                        <span class="item-total-price">8,000 UGX</span>
-                    </div>
-                </div>
+                <!-- Cart items will be dynamically rendered here by JavaScript -->
             </div>
 
             <div class="cart-summary">
                 <h2 class="summary-title">Order Summary</h2>
                 <div class="summary-row">
-                    <span>Subtotal (3 items)</span>
-                    <span>54,000 UGX</span>
+                    <span>Subtotal (0 items)</span>
+                    <span>0 UGX</span>
                 </div>
                 <div class="summary-row">
                     <span>Delivery Fee</span>
@@ -461,11 +411,11 @@
                 </div>
                 <div class="summary-row">
                     <span>Tax</span>
-                    <span>2,700 UGX</span>
+                    <span>0 UGX</span>
                 </div>
                 <div class="summary-row summary-total">
                     <span>Total</span>
-                    <span>61,700 UGX</span>
+                    <span>5,000 UGX</span>
                 </div>
                 <button class="checkout-btn">Proceed to Checkout</button>
                 <a href="products.html" class="continue-shopping">Continue Shopping</a>
@@ -494,9 +444,9 @@
     </footer>
 
     <script>
-        // Load cart from localStorage
+        // Load cart from localStorage or initialize an empty array
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
+
         function renderCartItems() {
             const cartItemsContainer = document.querySelector('.cart-items');
             
@@ -512,14 +462,14 @@
                 `;
                 return;
             }
-            
+
             let itemsHTML = '';
             let subtotal = 0;
-            
+
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 subtotal += itemTotal;
-                
+
                 itemsHTML += `
                     <div class="cart-item" data-id="${item.id}">
                         <img src="${item.image}" alt="${item.name}" class="cart-item-img">
@@ -539,14 +489,14 @@
                     </div>
                 `;
             });
-            
+
             cartItemsContainer.innerHTML = itemsHTML;
-            
+
             // Calculate totals
             const deliveryFee = 5000;
             const tax = subtotal * 0.05;
             const total = subtotal + deliveryFee + tax;
-            
+
             // Update summary
             document.querySelector('.summary-row:nth-child(1) span:last-child').textContent = 
                 `${subtotal.toLocaleString()} UGX (${cart.length} items)`;
@@ -554,11 +504,11 @@
                 `${Math.round(tax).toLocaleString()} UGX`;
             document.querySelector('.summary-total span:last-child').textContent = 
                 `${Math.round(total).toLocaleString()} UGX`;
-            
+
             // Add event listeners to new elements
             addCartEventListeners();
         }
-        
+
         function addCartEventListeners() {
             // Quantity controls
             document.querySelectorAll('.quantity-btn').forEach(btn => {
@@ -567,7 +517,7 @@
                     let value = parseInt(input.value);
                     const itemId = this.closest('.cart-item').dataset.id;
                     const item = cart.find(item => item.id === itemId);
-                    
+
                     if (this.classList.contains('minus') && value > 1) {
                         input.value = value - 1;
                         item.quantity = value - 1;
@@ -575,12 +525,12 @@
                         input.value = value + 1;
                         item.quantity = value + 1;
                     }
-                    
+
                     localStorage.setItem('cart', JSON.stringify(cart));
                     renderCartItems();
                 });
             });
-            
+
             // Remove item
             document.querySelectorAll('.remove-item').forEach(item => {
                 item.addEventListener('click', function() {
@@ -591,7 +541,7 @@
                 });
             });
         }
-        
+
         // Initialize cart on page load
         renderCartItems();
     </script>
